@@ -1,28 +1,40 @@
-import React from 'react';
+import React from "react";
+
+import ToolbarLink from "./ToolbarLink";
+
 
 function Toolbar({ user }) {
-    return (
-        <header className="mdc-toolbar">
-            <div className="mdc-toolbar__row">
-                <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-                    <span className="mdc-toolbar__title">Библиотека</span>
-                </section>
-                
-                <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
-                    <nav className="mdc-tab-bar">
-                        <a href="/" className="mdc-tab">Главная</a>
-                        <a href="/about" className="mdc-tab">О проекте</a>
-                        <a href="/books" className="mdc-tab">Книги</a>
-                        {user ?
-                            <a href="/logout" className="mdc-tab">Выйти</a>
-                            :
-                            <a href="/login" className="mdc-tab">Войти</a>
-                        }
-                    </nav>
-                </section>
-            </div>
-        </header>
-    );
+  return (
+    <header className="mdc-toolbar">
+      <div className="mdc-toolbar__row">
+        <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <span className="mdc-toolbar__title">Библиотека</span>
+        </section>
+        <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
+          <nav className="mdc-tab-bar">
+            <ToolbarLink exact to="/">
+              Главная
+            </ToolbarLink>
+            <ToolbarLink exact to="/about">
+              О проекте
+            </ToolbarLink>
+            <ToolbarLink exact to="/books">
+              Книги
+            </ToolbarLink>
+            {user ? (
+              <ToolbarLink exact to="/logout">
+                Выйти
+              </ToolbarLink>
+            ) : (
+              <ToolbarLink exact to="/login">
+                Войти
+              </ToolbarLink>
+            )}
+          </nav>
+        </section>
+      </div>
+    </header>
+  );
 }
 
 export default Toolbar;
